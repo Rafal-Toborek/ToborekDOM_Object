@@ -1,5 +1,15 @@
 const myDiv = document.getElementById("myDiv");
 
+function randomColor() {
+    const letters = "0123456789ABCDEF";
+    let color = "#";
+
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
 let H1element = document.createElement("h1");
 let H1text = document.createTextNode("Welcome to DOM homework");
 H1element.appendChild(H1text);
@@ -25,3 +35,19 @@ Li3.appendChild(Li3text);
 Ulelement.appendChild(Li3);
 Ulelement.appendChild(Li1, Li2, Li3,);
 myDiv.appendChild(Ulelement);
+
+H1element = H1element.classList.add("highlight");
+document.getElementById("myDiv").querySelector("h1").style.backgroundColor = "red";
+
+let myButton = document.createElement("button");
+let buttonText = document.createTextNode("New list item");
+document.body.appendChild(myButton);
+myButton.appendChild(buttonText);
+
+myButton.addEventListener("click", function () {
+    let newListItem = document.createElement("li");
+    newListItem.style.backgroundColor = randomColor();
+    let newListItemText = document.createTextNode("New list item " + (Ulelement.children.length + 1));
+    newListItem.appendChild(newListItemText);
+    Ulelement.appendChild(newListItem);
+});
